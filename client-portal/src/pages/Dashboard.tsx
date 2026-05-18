@@ -3,7 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '../lib/supabase';
 import { BentoGrid, BentoCard } from '../components/layout/BentoGrid';
 import { BentoGridSkeleton } from '../components/skeletons/BentoGridSkeleton';
-import { ShieldAlert, CreditCard, Bell, CalendarDays } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ShieldAlert, CreditCard, Bell, CalendarDays, Copy, FileText, QrCode } from 'lucide-react';
+import { Badge } from '../components/ui/Badge';
+import { Button } from '../components/ui/Button';
 
 export const ClientDashboard: React.FC = () => {
   const { data: profile, isLoading } = useQuery({
@@ -23,72 +26,113 @@ export const ClientDashboard: React.FC = () => {
     },
   });
 
-  if (isLoading) return <div className="p-8"><BentoGridSkeleton /></div>;
+  if (isLoading) return <div className="p-4 md:p-8 bg-[#07080a] min-h-screen"><BentoGridSkeleton /></div>;
 
-  // Bloqueio de Segurança para Moradores Pendentes
   if (profile?.status === 'pending') {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-background">
-        <div className="max-w-md space-y-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted animate-pulse">
-            <ShieldAlert className="w-10 h-10 text-muted-foreground" />
+      <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-[#07080a]">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-sm space-y-6"
+        >
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#16171d] border border-white/[0.06]">
+            <ShieldAlert className="w-8 h-8 text-slate-400" />
           </div>
-          <h1 className="text-3xl font-bold font-serif tracking-tight">Aguardando Aprovação</h1>
-          <p className="text-muted-foreground">
-            Seu cadastro foi enviado com sucesso! O síndico do seu condomínio precisa aprovar seu acesso antes que você possa visualizar o dashboard.
-          </p>
-          <button 
+          <div className="space-y-2">
+            <h1 className="text-sm font-medium uppercase tracking-widest text-white">Cadastro em análise</h1>
+            <p className="text-[11px] text-slate-500 leading-relaxed">
+              Aguardando aprovação do síndico. Você será notificado assim que seu acesso for liberado.
+            </p>
+          </div>
+          <Button 
+            variant="ghost"
             onClick={() => supabase.auth.signOut()}
-            className="text-sm font-medium underline underline-offset-4 hover:text-primary"
+            className="text-[10px] uppercase tracking-tighter"
           >
             Sair da conta
-          </button>
-        </div>
+          </Button>
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="p-8 space-y-8">
-      <header className="flex flex-col space-y-2">
-        <h1 className="text-4xl font-bold font-serif tracking-tight">Olá, {profile?.full_name?.split(' ')[0]}</h1>
-        <p className="text-muted-foreground">Bem-vindo ao portal do seu condomínio.</p>
+    <div className="min-h-screen bg-[#07080a] p-4 md:p-8 space-y-8">
+      <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="space-y-1">
+          <Badge variant="success" className="mb-2">Acesso Identificado</Badge>
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white">Olá, {profile?.full_name?.split(' ')[0]}</h1>
+          <p className="text-xs text-slate-500">Unidade {profile?.unit_number} • Residencial Condú</p>
+        </div>
       </header>
 
-      <BentoGrid>
+      <BentoGrid className="md:grid-cols-3">
+        {/* Vitrine Financeira */}
         <BentoCard 
-          title="Próximo Boleto" 
-          description="Vence em 5 dias"
+          title="Boleto em Aberto" 
+          description="Vencimento em 12 de Junho"
           span="col-span-1 md:col-span-2"
         >
-          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-2xl mt-4">
-            <div className="flex items-center gap-3">
-              <CreditCard className="w-5 h-5" />
-              <span className="font-mono text-lg font-bold">R$ 450,00</span>
+          <div className="flex flex-col h-full justify-between">
+            <div className="flex items-baseline gap-2 mt-2">
+              <span className="text-2xl font-bold tracking-tighter text-white">R$ 450,00</span>
+              <span className="text-[10px] text-slate-500 uppercase">Taxa Condominial</span>
             </div>
-            <button className="bg-primary text-primary-foreground px-4 py-2 rounded-xl text-sm font-medium">
-              PIX Copia e Cola
-            </button>
+            
+            <div className="flex gap-2 mt-6">
+              <Button size="sm" className="flex-1 gap-2">
+                <Copy className="w-3 h-3" />
+                Copiar PIX
+              </Button>
+              <Button variant="secondary" size="sm" className="flex-1 gap-2">
+                <FileText className="w-3 h-3" />
+                Ver PDF
+              </Button>
+            </div>
           </div>
         </BentoCard>
 
+        {/* Mural Digital */}
         <BentoCard title="Mural de Avisos">
-          <div className="space-y-4 mt-2">
-            <div className="flex gap-3">
-              <Bell className="w-4 h-4 text-primary shrink-0" />
-              <p className="text-sm">Manutenção preventiva dos elevadores amanhã.</p>
+          <div className="space-y-4">
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <Badge variant="destructive">Urgente</Badge>
+                <span className="text-[9px] text-slate-600 uppercase">Hoje</span>
+              </div>
+              <p className="text-[11px] text-slate-300 leading-snug">Manutenção preventiva dos elevadores das 14h às 16h.</p>
             </div>
-            <div className="flex gap-3">
-              <Bell className="w-4 h-4 text-primary shrink-0" />
-              <p className="text-sm">Nova regra de silêncio aprovada em assembleia.</p>
+            <div className="h-px bg-white/[0.04]" />
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <Badge variant="info">Informativo</Badge>
+                <span className="text-[9px] text-slate-600 uppercase">Ontem</span>
+              </div>
+              <p className="text-[11px] text-slate-300 leading-snug">Novas regras de uso da churrasqueira aprovadas.</p>
             </div>
           </div>
         </BentoCard>
 
-        <BentoCard title="Reservas">
-          <div className="flex flex-col items-center justify-center h-full text-center">
-            <CalendarDays className="w-8 h-8 text-muted-foreground mb-2" />
-            <p className="text-xs text-muted-foreground">Você não possui reservas ativas.</p>
+        {/* Atalho de Acesso */}
+        <BentoCard title="Acesso Rápido">
+          <div className="flex flex-col items-center justify-center h-full space-y-4">
+            <div className="p-3 bg-white rounded-md">
+              <QrCode className="w-16 h-16 text-black" />
+            </div>
+            <div className="text-center space-y-1">
+              <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">QR Code Temporário</p>
+              <p className="text-[9px] text-slate-600">Válido por 15 minutos</p>
+            </div>
+          </div>
+        </BentoCard>
+
+        {/* Reservas */}
+        <BentoCard title="Suas Reservas" span="col-span-1 md:col-span-2">
+          <div className="flex flex-col items-center justify-center h-full py-8 border border-dashed border-white/[0.06] rounded-md">
+            <CalendarDays className="w-6 h-6 text-slate-700 mb-2" />
+            <p className="text-[10px] text-slate-600 uppercase tracking-widest">Nenhuma reserva ativa</p>
+            <Button variant="ghost" size="sm" className="mt-2 text-[10px]">Reservar agora</Button>
           </div>
         </BentoCard>
       </BentoGrid>

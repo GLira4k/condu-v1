@@ -5,7 +5,7 @@ export const BentoSkeleton: React.FC<{ className?: string }> = ({ className }) =
   return (
     <div
       className={cn(
-        "rounded-3xl bg-muted animate-pulse border h-full w-full",
+        "rounded-lg bg-slate-900/60 animate-pulse border border-white/[0.04] h-full w-full",
         className
       )}
     />

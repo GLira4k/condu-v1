@@ -37,20 +37,20 @@ export const BentoCard: React.FC<BentoCardProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       className={cn(
-        "relative overflow-hidden rounded-3xl border bg-card p-6 shadow-sm transition-all hover:shadow-md",
+        "relative overflow-hidden rounded-lg border border-white/[0.06] bg-[#101114] p-4 shadow-sm transition-all",
         span,
         className
       )}
     >
-      <div className="flex flex-col h-full space-y-2">
-        <div>
-          <h3 className="text-xl font-bold tracking-tight font-serif">{title}</h3>
-          {description && <p className="text-sm text-muted-foreground">{description}</p>}
+      <div className="flex flex-col h-full">
+        <div className="space-y-1">
+          <h3 className="text-xs font-medium uppercase tracking-wider text-slate-400">{title}</h3>
+          {description && <p className="text-[11px] text-slate-500">{description}</p>}
         </div>
-        <div className="flex-1 mt-4">
+        <div className="flex-1 mt-3">
           {children}
         </div>
       </div>

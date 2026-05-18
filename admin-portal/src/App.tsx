@@ -6,13 +6,13 @@ import { FinancialsPage } from './pages/Financials';
 import { LandingPage } from './pages/Landing';
 import { LoginPage } from './pages/Login';
 import { NoticesPage } from './pages/Notices';
-import { ReservationsPage } from './pages/Reservations';
+import { AreasPage } from './pages/Areas';
 import { ResidentApprovalPage } from './pages/ResidentApproval';
+import { SettingsPage } from './pages/Settings';
 
 const AppContent = () => {
   const location = useLocation();
   const isAuthPage = location.pathname === '/login' || location.pathname === '/home';
-  const isAdminPage = !isAuthPage;
 
   return (
     <Routes>
@@ -24,10 +24,11 @@ const AppContent = () => {
           <AppLayout>
             <Routes>
               <Route path="/" element={<DashboardPage />} />
-              <Route path="/residents" element={<ResidentApprovalPage />} />
+              <Route path="/approval" element={<ResidentApprovalPage />} />
               <Route path="/financials" element={<FinancialsPage />} />
-              <Route path="/reservations" element={<ReservationsPage />} />
+              <Route path="/areas" element={<AreasPage />} />
               <Route path="/notices" element={<NoticesPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
             </Routes>
           </AppLayout>
         }

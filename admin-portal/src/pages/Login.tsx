@@ -1,5 +1,4 @@
-import { Building2, Eye, EyeOff, Github, Mail } from 'lucide-react';
-
+import { Building2, Eye, EyeOff, Mail, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
@@ -7,92 +6,93 @@ export const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-[2.5rem] border shadow-2xl shadow-slate-200 overflow-hidden">
-          <div className="p-8 md:p-12">
-            <div className="flex flex-col items-center text-center mb-10">
-              <div className="w-16 h-16 bg-slate-900 rounded-[1.5rem] flex items-center justify-center mb-6 shadow-xl shadow-slate-200">
-                <Building2 className="w-8 h-8 text-white" />
+    <div className="min-h-screen bg-[#07080a] flex items-center justify-center p-6 selection:bg-emerald-500/30">
+      <div className="w-full max-w-[400px] animate-in fade-in zoom-in-95 duration-500">
+        <div className="bg-[#101114] rounded-lg border border-white/[0.06] overflow-hidden">
+          <div className="p-8">
+            <div className="flex flex-col items-center text-center mb-8">
+              <div className="w-10 h-10 bg-condu-emerald rounded-md flex items-center justify-center mb-4">
+                <span className="text-[#07080a] text-lg font-black">C</span>
               </div>
-              <h1 className="text-3xl font-serif font-bold text-slate-900 mb-2">Bem-vindo de volta</h1>
-              <p className="text-slate-500 font-medium">Acesse o portal do seu condomínio</p>
+              <h1 className="text-base font-semibold text-white tracking-tight">Acessar Condú</h1>
+              <p className="text-xs text-slate-500 mt-1">Portal Administrativo do Condomínio</p>
             </div>
 
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">E-mail</label>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-0.5">E-mail</label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-600" />
                   <input 
                     type="email" 
                     placeholder="exemplo@email.com"
-                    className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500/20 transition-all font-medium"
+                    className="w-full pl-9 pr-3 py-2 bg-[#16171d] border border-white/[0.06] rounded-md focus:outline-none focus:border-slate-600 transition-all text-xs font-medium text-white placeholder:text-slate-600"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <div className="flex justify-between items-center ml-1">
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Senha</label>
-                  <a href="#" className="text-xs font-bold text-emerald-600 hover:text-emerald-700">Esqueceu?</a>
+              <div className="space-y-1.5">
+                <div className="flex justify-between items-center ml-0.5">
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Senha</label>
+                  <a href="#" className="text-[10px] font-bold text-slate-500 hover:text-white transition-colors">Esqueceu?</a>
                 </div>
                 <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-600" />
                   <button 
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 hover:text-slate-400 transition-colors"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                   </button>
                   <input 
                     type={showPassword ? "text" : "password"} 
                     placeholder="••••••••"
-                    className="w-full px-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500/20 transition-all font-medium"
+                    className="w-full pl-9 pr-9 py-2 bg-[#16171d] border border-white/[0.06] rounded-md focus:outline-none focus:border-slate-600 transition-all text-xs font-medium text-white placeholder:text-slate-600"
                   />
                 </div>
               </div>
 
               <Link 
                 to="/" 
-                className="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold text-lg hover:opacity-95 transition-opacity flex items-center justify-center shadow-lg shadow-slate-200"
+                className="w-full bg-white text-[#07080a] py-2 rounded-md font-semibold text-xs hover:bg-slate-200 transition-colors flex items-center justify-center mt-6"
               >
-                Entrar no Condú
+                Entrar no Condomínio
               </Link>
             </form>
 
-            <div className="mt-10 flex flex-col items-center gap-6">
-              <div className="relative w-full">
+            <div className="mt-8">
+              <div className="relative w-full mb-6">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-100"></div>
+                  <div className="w-full border-t border-white/[0.04]"></div>
                 </div>
-                <div className="relative flex justify-center text-xs uppercase tracking-widest font-bold text-slate-400">
-                  <span className="bg-white px-4">Ou continue com</span>
+                <div className="relative flex justify-center text-[10px] uppercase tracking-widest font-bold text-slate-600">
+                  <span className="bg-[#101114] px-3">Ou continue com</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 w-full">
-                <button className="flex items-center justify-center gap-2 py-3 border border-slate-100 rounded-2xl hover:bg-slate-50 transition-colors font-bold text-sm text-slate-600">
+              <div className="grid grid-cols-2 gap-3 w-full">
+                <button className="flex items-center justify-center gap-2 py-1.5 border border-white/[0.06] rounded-md hover:bg-white/5 transition-colors font-medium text-[11px] text-slate-400">
                    Google
                 </button>
-                <button className="flex items-center justify-center gap-2 py-3 border border-slate-100 rounded-2xl hover:bg-slate-50 transition-colors font-bold text-sm text-slate-600">
+                <button className="flex items-center justify-center gap-2 py-1.5 border border-white/[0.06] rounded-md hover:bg-white/5 transition-colors font-medium text-[11px] text-slate-400">
                    Apple
                 </button>
               </div>
             </div>
           </div>
           
-          <div className="bg-slate-50 p-6 text-center border-t border-slate-100">
-            <p className="text-sm text-slate-500 font-medium">
-              Ainda não tem conta? <a href="#" className="text-emerald-600 font-bold hover:text-emerald-700">Falar com síndico</a>
+          <div className="bg-white/[0.01] p-4 text-center border-t border-white/[0.04]">
+            <p className="text-[11px] text-slate-500">
+              Ainda não tem conta? <a href="#" className="text-slate-300 font-semibold hover:underline">Falar com síndico</a>
             </p>
           </div>
         </div>
         
         <div className="mt-8 text-center flex items-center justify-center gap-6">
-          <a href="#" className="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600">Suporte</a>
-          <a href="#" className="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600">Termos</a>
-          <a href="#" className="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600">Privacidade</a>
+          <a href="#" className="text-[10px] font-bold text-slate-600 uppercase tracking-widest hover:text-slate-400 transition-colors">Suporte</a>
+          <a href="#" className="text-[10px] font-bold text-slate-600 uppercase tracking-widest hover:text-slate-400 transition-colors">Termos</a>
+          <a href="#" className="text-[10px] font-bold text-slate-600 uppercase tracking-widest hover:text-slate-400 transition-colors">Privacidade</a>
         </div>
       </div>
     </div>
