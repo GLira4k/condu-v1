@@ -1,0 +1,83 @@
+# ==========================================
+# 🔒 SEGURANÇA E CHAVES PRIVADAS (CRUCIAL)
+# ==========================================
+# Ignora arquivos de configuração local que contêm suas URLs e senhas do Supabase
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.*
+
+# ==========================================
+# 📦 DEPENDÊNCIAS (PASTAS PESADAS)
+# ==========================================
+# Ignora a pasta de pacotes do Node.js (nunca deve ir para o GitHub)
+node_modules/
+/node_modules
+jspm_packages/
+
+# ==========================================
+# 🚀 BUILDS E PRODUÇÃO
+# ==========================================
+# Ignora os arquivos gerados quando você builda o projeto para produção
+dist/
+dist-ssr/
+build/
+out/
+.next/
+.nuxt/
+
+# ==========================================
+# 🛠️ CACHES E LOGS DO SISTEMA
+# ==========================================
+# Logs de erro do NPM/Yarn
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Caches de ferramentas de desenvolvimento (Vite, TypeScript, etc.)
+.eslintcache
+.stylelintcache
+.vite/
+.parcel-cache
+.turbo/
+.cache/
+
+# ==========================================
+# 💻 ARQUIVOS DO SISTEMA OPERACIONAL
+# ==========================================
+# Arquivos inúteis que o Windows e o Mac criam sozinhos nas pastas
+.DS_Store
+.DS_Store?
+._*
+Thumsc.db
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ==========================================
+# 📝 CONFIGURAÇÕES DE EDITORES (OPCIONAL)
+# ==========================================
+# Ignora pastas locais do VS Code ou WebStorm se você preferir
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ==========================================
+# 🤖 PLATAFORMAS DE IA E COMPONENTES LOCAIS
+# ==========================================
+# Ignora pastas de geração de código, skills, configurações e artefatos locais de ferramentas de IA (Lovable, Bolt, etc.)
+skills/
+/skills
+.lovable/
+.lovable_*
+/dev-artifacts
