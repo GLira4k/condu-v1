@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: 'class',
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        serif: ['Playfair Display', 'serif'], // Exemplo de serifa moderna
+        serif: ['Playfair Display', 'serif'],
         sans: ['Inter', 'sans-serif'],
       },
       colors: {
@@ -26,6 +26,10 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "premium-bg-light": "#f8fafc",
+        "premium-bg-dark": "#07080a",
+        "premium-card-light": "#ffffff",
+        "premium-card-dark": "#101114",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

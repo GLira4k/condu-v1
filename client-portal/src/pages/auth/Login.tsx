@@ -56,17 +56,17 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#07080a] p-4">
+    <div className="flex min-h-screen items-center justify-center bg-premium-bg-light dark:bg-premium-bg-dark p-4 transition-colors">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-[320px] space-y-8"
       >
         <div className="flex flex-col items-center space-y-2">
-          <div className="h-8 w-8 bg-white rounded-sm flex items-center justify-center">
-            <span className="text-black font-bold text-xl">C</span>
+          <div className="h-8 w-8 bg-slate-900 dark:bg-white rounded-sm flex items-center justify-center">
+            <span className="text-white dark:text-black font-bold text-xl">C</span>
           </div>
-          <h1 className="text-sm font-medium tracking-widest uppercase text-slate-400">Condú</h1>
+          <h1 className="text-sm font-medium tracking-widest uppercase text-slate-500 dark:text-slate-400">Condú</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -83,7 +83,7 @@ export const Login: React.FC = () => {
           <div className="space-y-2">
             <div className="flex justify-between items-center px-1">
               <label className="text-[10px] font-medium uppercase tracking-wider text-slate-500">Senha</label>
-              <button type="button" className="text-[10px] text-slate-500 hover:text-white transition-colors">Esqueceu?</button>
+              <button type="button" className="text-[10px] text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">Esqueceu?</button>
             </div>
             <Input 
               {...register('password')}
@@ -102,7 +102,7 @@ export const Login: React.FC = () => {
         </form>
 
         <p className="text-center text-[10px] text-slate-500">
-          Ainda não tem acesso? <Link to="/register" className="text-white hover:underline">Solicitar cadastro</Link>
+          Ainda não tem acesso? <Link to="/register" className="text-slate-900 dark:text-white hover:underline">Solicitar cadastro</Link>
         </p>
       </motion.div>
     </div>

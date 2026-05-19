@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: 'class',
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -50,6 +50,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "premium-bg-light": "#f8fafc",
+        "premium-bg-dark": "#07080a",
+        "premium-card-light": "#ffffff",
+        "premium-card-dark": "#101114",
         "condu-dark": "#07080a",
         "condu-card": "#101114",
         "condu-border": "rgba(255, 255, 255, 0.06)",

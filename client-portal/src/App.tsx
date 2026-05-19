@@ -4,6 +4,8 @@ import { Login } from './pages/auth/Login'
 import { Register } from './pages/auth/Register'
 import { Bookings } from './pages/Bookings'
 import { Occurrences } from './pages/Occurrences'
+import { ProfilePage } from './pages/Profile'
+import { FinancialPage } from './pages/Financial'
 import { Shell } from './components/layout/Shell'
 import { useQuery } from '@tanstack/react-query'
 import { supabase } from './lib/supabase'
@@ -29,6 +31,8 @@ function App() {
           <Route path="/" element={<ClientDashboard />} />
           <Route path="/bookings" element={<Bookings />} />
           <Route path="/occurrences" element={<Occurrences />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/financial" element={<FinancialPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

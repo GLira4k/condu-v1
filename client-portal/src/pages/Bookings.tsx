@@ -14,9 +14,9 @@ const spaces = [
 
 export const Bookings: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#07080a] p-4 md:p-8 space-y-8">
+    <div className="min-h-screen bg-premium-bg-light dark:bg-premium-bg-dark p-4 md:p-8 space-y-8">
       <header className="space-y-1">
-        <h1 className="text-xl font-bold tracking-tight text-white">Reserva de Espaços</h1>
+        <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Reserva de Espaços</h1>
         <p className="text-xs text-slate-500">Selecione um local para agendar seu evento ou atividade.</p>
       </header>
 
@@ -28,16 +28,16 @@ export const Bookings: React.FC = () => {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <Card className="overflow-hidden border-white/[0.06] bg-[#101114]">
+              <Card className="overflow-hidden border-slate-200 dark:border-white/[0.06] bg-white dark:bg-[#101114]">
                 <CardContent className="p-0">
                   <div className="flex flex-col sm:flex-row">
-                    <div className="w-full sm:w-32 h-24 bg-slate-900 flex items-center justify-center border-r border-white/[0.04]">
-                      <CalendarDays className="w-8 h-8 text-slate-700" />
+                    <div className="w-full sm:w-32 h-24 bg-slate-50 dark:bg-slate-900 flex items-center justify-center border-r border-slate-100 dark:border-white/[0.04]">
+                      <CalendarDays className="w-8 h-8 text-slate-300 dark:text-slate-700" />
                     </div>
                     <div className="flex-1 p-4 flex flex-col justify-between">
                       <div className="flex justify-between items-start">
                         <div>
-                          <h3 className="text-sm font-medium text-white">{space.name}</h3>
+                          <h3 className="text-sm font-medium text-slate-900 dark:text-white">{space.name}</h3>
                           <div className="flex items-center gap-3 mt-1">
                             <span className="flex items-center gap-1 text-[11px] text-slate-500">
                               <Users className="w-3 h-3" />
@@ -70,14 +70,14 @@ export const Bookings: React.FC = () => {
         </div>
 
         <div className="space-y-4">
-          <Card className="bg-[#101114] border-white/[0.06]">
+          <Card className="bg-white dark:bg-[#101114] border-slate-200 dark:border-white/[0.06]">
             <CardContent className="p-4 space-y-4">
-              <h3 className="text-xs font-medium uppercase tracking-widest text-slate-400">Calendário</h3>
-              <div className="aspect-square bg-[#16171d] rounded-md border border-white/[0.04] flex items-center justify-center">
-                <p className="text-[10px] text-slate-600 uppercase tracking-widest">Mini Calendário Integrado</p>
+              <h3 className="text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">Calendário</h3>
+              <div className="aspect-square bg-slate-50 dark:bg-[#16171d] rounded-md border border-slate-100 dark:border-white/[0.04] flex items-center justify-center">
+                <p className="text-[10px] text-slate-400 dark:text-slate-600 uppercase tracking-widest">Mini Calendário Integrado</p>
               </div>
-              <div className="flex items-start gap-2 p-3 bg-white/[0.02] rounded-md border border-white/[0.04]">
-                <Info className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2 p-3 bg-slate-50/50 dark:bg-white/[0.02] rounded-md border border-slate-100 dark:border-white/[0.04]">
+                <Info className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0 mt-0.5" />
                 <p className="text-[10px] text-slate-500 leading-normal">
                   Selecione um espaço ao lado para visualizar as datas disponíveis no calendário.
                 </p>

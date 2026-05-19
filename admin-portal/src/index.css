@@ -4,17 +4,49 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%; /* #07080a approximation */
+    --background: 210 40% 98%; /* #f8fafc */
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 161 72% 39%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.375rem; /* rounded-md (6px) */
+
+    --scrollbar-thumb: #e2e8f0;
+    --scrollbar-hover: #cbd5e1;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 6%; /* #101114 approximation */
+    --card: 240 10% 6%;
     --card-foreground: 0 0% 98%;
 
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-
-    --primary: 161 72% 39%;
-    --primary-foreground: 0 0% 98%;
 
     --secondary: 240 10% 10%;
     --secondary-foreground: 0 0% 98%;
@@ -25,23 +57,21 @@
     --accent: 240 10% 10%;
     --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 10% 10%; /* border-white/[0.06] or border-slate-800 approximation */
+    --border: 240 10% 10%;
     --input: 240 10% 10%;
     --ring: 240 10% 10%;
 
-    --radius: 0.375rem; /* rounded-md (6px) */
+    --scrollbar-thumb: #1e1e1e;
+    --scrollbar-hover: #2a2a2a;
   }
 }
 
 @layer base {
   * {
-    @apply border-white/[0.06];
+    @apply border-slate-200 dark:border-white/[0.06];
   }
   body {
-    @apply bg-[#07080a] text-foreground font-sans antialiased selection:bg-primary/30;
+    @apply bg-premium-bg-light dark:bg-premium-bg-dark text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-primary/30 transition-colors duration-200;
   }
 }
 
@@ -56,10 +86,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e1e1e;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a2a2a;
+  background: var(--scrollbar-hover);
 }

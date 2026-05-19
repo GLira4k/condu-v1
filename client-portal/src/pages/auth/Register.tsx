@@ -58,17 +58,17 @@ export const Register: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#07080a] p-4">
+    <div className="flex min-h-screen items-center justify-center bg-premium-bg-light dark:bg-premium-bg-dark p-4 transition-colors">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-[320px] space-y-8"
       >
         <div className="flex flex-col items-center space-y-2">
-          <div className="h-8 w-8 bg-white rounded-sm flex items-center justify-center">
-            <span className="text-black font-bold text-xl">C</span>
+          <div className="h-8 w-8 bg-slate-900 dark:bg-white rounded-sm flex items-center justify-center">
+            <span className="text-white dark:text-black font-bold text-xl">C</span>
           </div>
-          <h1 className="text-sm font-medium tracking-widest uppercase text-slate-400">Condú</h1>
+          <h1 className="text-sm font-medium tracking-widest uppercase text-slate-500 dark:text-slate-400">Condú</h1>
           <h2 className="text-[11px] text-slate-500 uppercase tracking-tighter">Solicitação de Acesso</h2>
         </div>
 
@@ -129,7 +129,7 @@ export const Register: React.FC = () => {
         </form>
 
         <p className="text-center text-[10px] text-slate-500">
-          Já tem uma conta? <Link to="/login" className="text-white hover:underline">Fazer login</Link>
+          Já tem uma conta? <Link to="/login" className="text-slate-900 dark:text-white hover:underline">Fazer login</Link>
         </p>
       </motion.div>
     </div>

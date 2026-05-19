@@ -17,7 +17,7 @@ const Badge = ({ className, variant = 'default', children, ...props }: BadgeProp
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border border-white/[0.06] bg-transparent px-2 py-0.5 text-[10px] font-medium text-white transition-colors",
+        "inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-white/[0.06] bg-transparent px-2 py-0.5 text-[10px] font-medium text-slate-900 dark:text-white transition-colors",
         className
       )}
       {...props}

@@ -41,6 +41,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#07080a] text-white font-sans antialiased selection:bg-white/10;
+    @apply bg-premium-bg-light dark:bg-premium-bg-dark text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-slate-900/10 dark:selection:bg-white/10;
   }
 }

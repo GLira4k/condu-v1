@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { cn } from '../../lib/utils'; // Assumindo utilitário padrão do shadcn
+import { cn } from '../../lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 interface BentoGridProps {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ interface BentoCardProps {
   children: React.ReactNode;
   className?: string;
   span?: string;
+  to?: string;
 }
 
 export const BentoCard: React.FC<BentoCardProps> = ({
@@ -34,21 +36,26 @@ export const BentoCard: React.FC<BentoCardProps> = ({
   children,
   className,
   span = 'col-span-1',
+  to,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
+      onClick={() => to && navigate(to)}
       className={cn(
-        "relative overflow-hidden rounded-lg border border-white/[0.06] bg-[#101114] p-4 transition-all duration-150",
+        "relative overflow-hidden rounded-lg border border-slate-200 dark:border-white/[0.06] bg-premium-card-light dark:bg-premium-card-dark p-4 transition-all duration-150",
+        to && "cursor-pointer hover:border-slate-300 dark:hover:border-white/10 hover:shadow-sm",
         span,
         className
       )}
     >
       <div className="flex flex-col h-full">
         <div className="mb-3">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500">{title}</h3>
-          {description && <p className="text-[11px] text-slate-400 mt-0.5">{description}</p>}
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{title}</h3>
+          {description && <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">{description}</p>}
         </div>
         <div className="flex-1">
           {children}
